@@ -1,15 +1,5 @@
 export type Digit = DigitMap[keyof DigitMap];
-export type DigitString =
-  | "0"
-  | "1"
-  | "2"
-  | "3"
-  | "4"
-  | "5"
-  | "6"
-  | "7"
-  | "8"
-  | "9";
+export type DigitString = keyof DigitMap;
 export type DigitMap = {
   "0": 0;
   "1": 1;
@@ -23,7 +13,7 @@ export type DigitMap = {
   "9": 9;
 };
 
-export type NumberToDigits<N extends number> = StringToDigits<`${N}`>
+export type NumberToDigits<N extends number> = StringToDigits<`${N}`>;
 
 export type StringToDigits<
   Str extends string,
@@ -44,8 +34,15 @@ export type DigitsToString<
     : never
   : Str;
 
-type z = DigitsToString<[0,1,2,3]>
 
-export type DigitsToNumber<T extends Digit[]> = ParseInt<DigitsToString<T>>
+export type DigitsToNumber<T extends Digit[]> = ParseInt<
+  DigitsToString<TrimZeros<T>>
+>;
 
 export type ParseInt<T> = T extends `${infer N extends number}` ? N : never;
+
+export type TrimZeros<T extends Digit[]> = T extends [0]
+  ? [0]
+  : T extends [0, ...infer Rest extends Digit[]]
+  ? TrimZeros<Rest>
+  : T;
