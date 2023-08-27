@@ -105,3 +105,17 @@ export type Max<A extends number, B extends number> = GreaterThan<
 > extends true
   ? A
   : B;
+
+export type ArrayMax<A extends number[], Temp extends number = 0> = A extends [
+  infer First extends number,
+  ...infer Rest extends number[],
+]
+  ? ArrayMax<Rest, Max<Temp, First>>
+  : Temp;
+
+export type ArrayMin<
+  A extends number[],
+  Temp extends number = 1_000_000,
+> = A extends [infer First extends number, ...infer Rest extends number[]]
+  ? ArrayMin<Rest, Min<Temp, First>>
+  : Temp;
