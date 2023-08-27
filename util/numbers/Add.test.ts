@@ -32,12 +32,14 @@ describe("Add numbers", () => {
     expectTypeOf<Add<123, 78901>>().toEqualTypeOf<79024>();
     expectTypeOf<Add<9999, 9999>>().toEqualTypeOf<19998>();
     expectTypeOf<Add<123456, 5671237>>().toEqualTypeOf<5794693>();
-    expectTypeOf<Add<1092837019238, 1923801238>>().toEqualTypeOf<1094760820476>();
+    expectTypeOf<
+      Add<1092837019238, 1923801238>
+    >().toEqualTypeOf<1094760820476>();
   });
 
   it("Works for add zero", () => {
-    expectTypeOf<Add<100,0>>().toEqualTypeOf<100>();
-    expectTypeOf<Add<0,100>>().toEqualTypeOf<100>();
-    expectTypeOf<Add<0,12345>>().toEqualTypeOf<12345>();
-  })
+    expectTypeOf<Add<100, 0>>().toEqualTypeOf<100>();
+    expectTypeOf<Add<0, 100>>().toEqualTypeOf<100>();
+    expectTypeOf<Add<0, 12345>>().toEqualTypeOf<12345>();
+  });
 });

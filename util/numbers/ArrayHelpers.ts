@@ -8,7 +8,6 @@ export type Sum<T extends number[], Output extends number = 0> = T extends [
   ? Sum<Rest, Add<Output, First>>
   : Output;
 
-
 export type ArrayToNumber<T> = T extends []
   ? []
   : T extends [infer First, ...infer Rest]
@@ -18,4 +17,3 @@ export type ArrayToNumber<T> = T extends []
     ? [ParseInt<First>, ...ArrayToNumber<Rest>]
     : never
   : [ParseInt<T>];
-

@@ -1,6 +1,6 @@
 import type { Digit, DigitsToNumber, NumberToDigits } from "./numbers";
 
-type DigitAddTable = [
+export type DigitAddTable = [
   [
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
@@ -11,7 +11,7 @@ type DigitAddTable = [
     [6, 7, 8, 9, 0, 1, 2, 3, 4, 5],
     [7, 8, 9, 0, 1, 2, 3, 4, 5, 6],
     [8, 9, 0, 1, 2, 3, 4, 5, 6, 7],
-    [9, 0, 1, 2, 3, 4, 5, 6, 7, 8]
+    [9, 0, 1, 2, 3, 4, 5, 6, 7, 8],
   ],
   [
     [1, 2, 3, 4, 5, 6, 7, 8, 9, 0],
@@ -23,8 +23,8 @@ type DigitAddTable = [
     [7, 8, 9, 0, 1, 2, 3, 4, 5, 6],
     [8, 9, 0, 1, 2, 3, 4, 5, 6, 7],
     [9, 0, 1, 2, 3, 4, 5, 6, 7, 8],
-    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-  ]
+    [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  ],
 ];
 
 type DigitCarryTable = [
@@ -38,7 +38,7 @@ type DigitCarryTable = [
     [0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
     [0, 0, 0, 1, 1, 1, 1, 1, 1, 1],
     [0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
-    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+    [0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
   ],
   [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -50,8 +50,8 @@ type DigitCarryTable = [
     [0, 0, 0, 1, 1, 1, 1, 1, 1, 1],
     [0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
     [0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-  ]
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+  ],
 ];
 
 export type Add<N1 extends number, N2 extends number> = AddDigits<
@@ -67,7 +67,7 @@ type AddDigits<
   X extends Digit[],
   Y extends Digit[],
   Carry extends 0 | 1 = 0,
-  Acc extends Digit[] = []
+  Acc extends Digit[] = [],
 > = X extends [...infer X1 extends Digit[], infer Xn extends Digit]
   ? Y extends [...infer Y1 extends Digit[], infer Yn extends Digit]
     ? AddDigits<
@@ -82,4 +82,3 @@ type AddDigits<
   : Carry extends 1
   ? [1, ...Acc]
   : Acc;
-

@@ -1,6 +1,6 @@
 import { describe, expectTypeOf, it } from "vitest";
 
-import type { Part1 , Part2 } from "./01";
+import type { Part1, Part2 } from "./01";
 
 describe("Day 1", () => {
   it("Part1 works for the example", () => {

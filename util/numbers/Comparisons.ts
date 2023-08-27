@@ -17,7 +17,7 @@ type DigitComparisonMap = [
   [-1, -1, -1, -1, -1, -1, 0, 1, 1, 1],
   [-1, -1, -1, -1, -1, -1, -1, 0, 1, 1],
   [-1, -1, -1, -1, -1, -1, -1, -1, 0, 1],
-  [-1, -1, -1, -1, -1, -1, -1, -1, -1, 0]
+  [-1, -1, -1, -1, -1, -1, -1, -1, -1, 0],
 ];
 
 /**
@@ -42,7 +42,7 @@ type ToString<U extends number | bigint> = `${U}`;
  */
 type CompareLength<
   S1 extends string,
-  S2 extends string
+  S2 extends string,
 > = S1 extends `${infer _}${infer R1}`
   ? S2 extends `${infer _}${infer R2}`
     ? CompareLength<R1, R2>
@@ -62,7 +62,7 @@ type CompareLength<
  */
 type CompareSameLength<
   S1 extends string,
-  S2 extends string
+  S2 extends string,
 > = S1 extends `${infer D1 extends DigitString}${infer R1}`
   ? S2 extends `${infer D2 extends DigitString}${infer R2}`
     ? CompareDigits<DigitMap[D1], DigitMap[D2]> extends infer Result
