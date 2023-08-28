@@ -2,7 +2,7 @@ import { Take } from "../util/array/Take";
 import { ToNumberArray } from "../util/strings/ToArray";
 import { Add } from "../util/numbers/Add";
 import { Input } from "./Inputs/01";
-import { ShiftLeft } from "../util/numbers/Divide";
+import { ShiftRight } from "../util/numbers/Divide";
 
 // type Solve1 = Part1<Input>
 // type Solve2 = Part2<Input>
@@ -14,7 +14,7 @@ export type Part1<TInput extends string> =
 
 export type Part2<TInput extends string> =
   ToNumberArray<TInput> extends infer Arr extends number[]
-    ? ReduceChunk<Arr, Rotate<Arr, ShiftLeft<Arr["length"]>>>
+    ? ReduceChunk<Arr, Rotate<Arr, ShiftRight<Arr["length"]>>>
     : never;
 
 type Matches<X, Y> = X extends Y ? X : 0;
