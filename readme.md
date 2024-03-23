@@ -6,7 +6,7 @@ of the [type-challenges](https://github.com/type-challenges/type-challenges) I w
 Many of the algorithms I've implemented for the numbers have been from me trying to figure out how to do it and using HOTScript as a reference implementation when I couldn't figure
 out the algorithm fully.
 
-I've not managed to get very far in a given year mostly since the key problem is handling the recursion limits!
+While the type system gives you a functional language that lets you solve complex problems, it has a fairly aggressive cap on recursion limits. A fair few problems I've tackled will work for the examples given, but rapidly hit recursion limits when given full inputs!
 
 ### Playgrounds with my solutions
 
